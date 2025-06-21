@@ -1,5 +1,5 @@
 async function getWeather() {
-  const apiKey = "YOUR_API_KEY"; // Replace this with your actual API key
+  const apiKey = "YOUR_API_KEY";
   const city = "London";
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
@@ -16,13 +16,11 @@ async function getWeather() {
     }
 
     const data = await response.json();
-    const weatherDescription = data.weather[0].main;
+    const weatherMain = data.weather[0].main;
+    const output = `Current weather in London: ${weatherMain}`;
+    document.getElementById("weatherData").innerText = output;
 
-    document.getElementById("weatherData").innerText =
-      `Current weather in ${city}: ${weatherDescription}`;
   } catch (error) {
-    document.getElementById("weatherData").innerText =
-      "Error fetching weather data.";
-    console.error(error);
+    document.getElementById("weatherData").innerText = "Error fetching weather data.";
   }
 }
