@@ -19,7 +19,6 @@ async function getWeather() {
     const weatherMain = data.weather[0].main;
     const output = `Current weather in London: ${weatherMain}`;
     document.getElementById("weatherData").innerText = output;
-
   } catch (error) {
     document.getElementById("weatherData").innerText = "Error fetching weather data.";
   }
